@@ -1,0 +1,914 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Unravel Mountain Trek 完整关卡拆解：10个体验阶段、15个局部问题、路线标注、实机视频与设计分析。"><title>Mountain Trek · 关卡拆解案</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2313221d'/%3E%3Cpath d='M7 25V8l9 12 9-12v17' fill='none' stroke='%23de6246' stroke-width='3'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="report.css"></head><body><a class="skip" href="#main">跳至正文</a><header class="mobile-header"><a href="#report00">Mountain Trek</a><button id="menu-toggle" aria-expanded="false" aria-controls="sidebar">目录 ☰</button></header><aside id="sidebar"><a class="brand" href="#report00"><span class="brand-mark">M</span><div>Mountain Trek<small>UNRAVEL · 关卡拆解案</small></div></a><div class="nav-heading">阅读目录</div><nav aria-label="拆解案目录"><a href="#report00" class="report-link"><span>00</span><div>项目简介</div></a><a href="#report01" class="report-link"><span>01</span><div>研究问题</div></a><a href="#report02" class="report-link"><span>02</span><div>整关结论</div></a><a href="#report03" class="report-link"><span>03</span><div>整关流程图</div></a><a href="#report04" class="report-link"><span>04</span><div>机制递进表</div></a><a href="#report05" class="report-link"><span>05</span><div>节奏曲线</div></a><a href="#report07" class="report-link"><span>07</span><div>详细关卡分析</div></a><a href="#report08" class="report-link"><span>08</span><div>视觉与听觉引导</div></a><a href="#report09" class="report-link"><span>09</span><div>收藏品与支路</div></a><a href="#report10" class="report-link"><span>10</span><div>失败与恢复</div></a><a href="#report11" class="report-link"><span>11</span><div>优点与问题</div></a><a href="#report12" class="report-link"><span>12</span><div>可迁移原则</div></a><a href="#report13" class="report-link"><span>13</span><div>如果重做</div></a></nav><div class="sidebar-foot"><span>沿一根红线，走完一段记忆。</span><small>实机素材 · 标注路线 · 设计分析</small></div></aside><main id="main"><section class="view report-view" id="report00"><header class="overview-hero"><div class="hero-copy"><div class="eyebrow">UNRAVEL · CHAPTER 04</div><h1>Mountain Trek<span>00_项目简介 · 关卡拆解案</span></h1><p>同一根毛线，串起观察、推理与反应。<br>沿 10 个体验阶段，阅读这段旅程如何组织挑战。</p><div class="hero-stats"><span><b>10</b>体验阶段</span><span><b>15</b>局部问题</span><span><b>5</b>隐藏纽扣</span></div></div><img src="assets/B00_01_opening.png" alt="秋日树枝上的毛线精灵"></header>
+<div class="overview-intro"><p><strong>阅读重点</strong>　关卡路线、机制因果、教学递进与失败压力。所有路线图保留原标注，实机片段按需播放。</p><div class="evidence-key"><span>实机标注 / 用户确认</span><span>原脑图观察</span><span>设计分析</span></div></div>
+<div class="prose"><h2>研究对象</h2>
+<p><strong>《Unravel》第一部 · 第四关 Mountain Trek。</strong> 玩家操作毛线精灵 Yarny 穿越山林、洞穴和水域，通过毛线连接、物体运输与环境互动抵达终点。本案围绕关卡设计展开，剧情只保留与玩法节奏有关的说明。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析范围</td>
+<td>从树枝出生点到毛线蝴蝶奖励，以及通关后的相册收束</td>
+</tr>
+<tr>
+<td>结构规模</td>
+<td>10 个体验阶段 B00–B09，15 个局部问题，5 枚隐藏纽扣</td>
+</tr>
+<tr>
+<td>核心动作</td>
+<td>移动、跳跃、套索、系结／解结、攀爬、摆荡、推拉物体</td>
+</tr>
+<tr>
+<td>分析重点</td>
+<td>规则如何被看见、能力如何递进、空间如何限制解法、压力如何切换</td>
+</tr>
+<tr>
+<td>核心材料</td>
+<td>原 XMind 脑图、实机标注图、用户剪辑的示范视频与操作确认</td>
+</tr>
+<tr>
+<td>网络材料</td>
+<td>官方主题介绍及第三方关卡攻略，用于交叉核对，来源附在本节末尾</td>
+</tr>
+<tr>
+<td>不展开的内容</td>
+<td>全游戏剧情考据、人物身份推定、逐张照片配对、引擎实现</td>
+</tr>
+</tbody>
+</table>
+<h2>拆解单位与证据</h2>
+<p><strong>B（Beat）</strong>按一段体验在全关中的功能划分；<strong>P（Puzzle）</strong>按“局面受阻 → 玩家解决 → 局面改变”划分。套索、跳跃等是问题的操作属性，不单独切成一道谜题。纽扣、补给和回忆是附着在路线上的标记。</p>
+<p>事实与解释分别保留来源：<strong>用户确认／实机标注</strong>说明实际行为与位置；<strong>原记录</strong>保留脑图中的镜头、音乐和风险观察；<strong>资料补充</strong>注明外部来源；<strong>分析</strong>解释设计作用，不能当作开发者原话或玩家测试结果。</p>
+<p>视频按要求原样嵌入，未抽帧、转码或另行分析。文字依据原记录、图片标注和用户说明；未测量的数据保持空白。</p><details class="source-details"><summary>资料来源、甄别与待补记录</summary><h2>本案的依据</h2><p>以《Mountain Trek_完善版.xmind》、用户提供的路线标注与操作说明为主体，网络资料用于交叉核对。视频按用户要求原样嵌入，未抽帧、转码或另行分析；视频标题和段落归属依据用户提交说明。设计功能属于分析，不冒充开发者自述或玩家实测结果。</p><h2>补图后已修订</h2><ul><li>人物影像统一为走近自动触发，白光收集用文字说明。</li><li>鱼船需要持续按住“发射毛线”，松开会死亡。</li><li>塑料袋也需持续按住“发射毛线”，但不能左右控制方向；不推定松开的具体死亡判定。</li><li>B07 左上绕行被毛线长度限制，局部台阶限制木桶移动，主路与纽扣支线分别呈现。</li><li>B08 采用用户图示的向左牵拉重物解法，不将攻略的推入水中写为必需步骤。</li><li>杠杆两种配重方案是同一底图上的路线示意，不当作实拍前后状态。</li></ul><h2>保留空白</h2><table><thead><tr><th>待核验项目</th><th>记录</th></tr></thead><tbody><tr><td>完整实机版本、各段时长与重试统计</td><td>待补</td></tr><tr><td>补给与存档精确点位、收集保存规则</td><td>待补</td></tr><tr><td>音乐正式曲目名与精确切换时间</td><td>待补</td></tr><tr><td>追逐中一次性结点的具体位置</td><td>待补</td></tr><tr><td>相册内页与影像逐条对应</td><td>未展开，非本案重点</td></tr></tbody></table><p>检索与阅读日期：2026-09-11。资料用于补充现有脑图，不整篇翻译攻略；正文中的设计判断由本稿独立组织。</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>性质</th>
+<th>本稿采用范围</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.ea.com/games/unravel/unravel">EA：Unravel 游戏介绍</a></td>
+<td>官方</td>
+<td>毛线物理解谜、家庭记忆与无对白叙事定位</td>
+<td>不提供本关完整节点资料</td>
+</tr>
+<tr>
+<td><a href="https://www.ea.com/games/unravel/news/welcome-to-unravel?isLocalized=true">EA：Welcome to Unravel</a></td>
+<td>创意总监署名介绍</td>
+<td>自然环境取材及毛线跨越障碍的创作背景</td>
+<td>不用于证明具体谜题的设计意图</td>
+</tr>
+<tr>
+<td><a href="https://www.ea.com/ea-originals/news/what-are-the-yarnys">EA：What Are Yarnys and Where Do They Come From?</a></td>
+<td>官方、兼谈续作</td>
+<td>只采用明确回顾第一部的祖母与回忆关系</td>
+<td>不把第二部设定移植进第一部</td>
+</tr>
+<tr>
+<td><a href="https://www.gamepressure.com/unravel/level-4-mountain-trek-walkthrough/z98665">Gamepressure：Level 4 – Mountain Trek</a></td>
+<td>第三方图文攻略</td>
+<td>章节、首次遭遇的描述差异、配重机关</td>
+<td>物种及局部因果措辞不够精确</td>
+</tr>
+<tr>
+<td><a href="https://www.trueachievements.com/game/Unravel/walkthrough/6">TrueAchievements：Chapter 4</a></td>
+<td>玩家社区攻略</td>
+<td>开场替代解法、木头危险、鱼的交互点、解结需求</td>
+<td>平台按键与通关路线不能当唯一方案</td>
+</tr>
+<tr>
+<td><a href="https://gamerwalkthroughs.com/unravel/chapter-4-mountain-trek/">Gamer Walkthroughs：Chapter 4</a></td>
+<td>第三方攻略</td>
+<td>鸟屋地标、第三枚收集物的额外状态</td>
+<td>部分物体称呼与方向表述不统一</td>
+</tr>
+<tr>
+<td><a href="https://www.jeuxvideo.com/wikis-soluce-astuces/460121/solution-complete-unravel-chapitre-4-rando-en-montagne.htm">Jeuxvideo：Chapitre 4</a></td>
+<td>第三方图文攻略</td>
+<td>起点支撑石与路线变化</td>
+<td>法文物体名称不作为本稿最终命名依据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>未采用为事实依据的材料：</strong> Mountain Trek 的 Fandom 页面在读取时仍有大量待填占位；搜索结果中若干名为 walkthrough 的 PDF 实际混有无关游戏或第二部内容；带平台移除提示的视频条目不作为已观看证据；泛泛的玩家情绪评价不用于推导本关触发位置、音乐曲名或人物身份。</p></details></div><footer class="chapter-footer"><a href="#report01">01_研究问题 →</a></footer></section><section class="view report-view" id="report01" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">01_</span>研究问题</h1></header><div class="prose"><p>本案尝试回答五个问题。每个问题都对应关卡证据，以及目前能得出的结论范围。</p>
+<table>
+<thead>
+<tr>
+<th>研究问题</th>
+<th>重点观察</th>
+<th>对应证据</th>
+<th>目前结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已有基础能力如何撑起一整关的变化？</td>
+<td>操作相近时，空间、时限和目标如何变化</td>
+<td>B01 复习、B05 组合、B06 追逐、B07 多层空间</td>
+<td>变化主要来自使用条件与组合关系，而非持续添加新按钮</td>
+</tr>
+<tr>
+<td>玩家怎样从看见环境现象，转为主动利用规则？</td>
+<td>示范是否显示原因、玩家是否有复现机会</td>
+<td>B02–B03 孢子链；B08 鸟压枝与牵拉重物</td>
+<td>存在“演示—再次提示—主动应用”的结构；实际理解率仍需首次游玩测试</td>
+</tr>
+<tr>
+<td>为什么 B07 仍然难，却能承接追逐后的释放？</td>
+<td>认知负荷与即时威胁是否分别变化</td>
+<td>B06 追逐视频、B07 主路与错误路线图</td>
+<td>决策时间变长、追击解除，认知复杂度仍然保留</td>
+</tr>
+<tr>
+<td>隐藏收集是否只是把奖励放远一点？</td>
+<td>是否改变观察方向、道具状态或空间阅读方式</td>
+<td>五枚纽扣，尤其 C03 配重、C04 运石、C05 回看</td>
+<td>收集分别测试下探、上看、状态切换、前置推理和事件后回看</td>
+</tr>
+<tr>
+<td>关卡怎样限制错误解法，同时维持可理解性？</td>
+<td>限制是否可感知，失败是否提供信息</td>
+<td>落石封路、毛线长度、跳跃高度、木桶移动边界</td>
+<td>限制能组织解题顺序；可读性与失败公平性不能仅凭成功路线定案</td>
+</tr>
+</tbody>
+</table>
+<p><strong>研究边界：</strong> 当前材料足以分析关卡结构和操作因果，不足以声称“新手一定能理解”“该段平均失败几次”或“所有玩家都会感到放松”。这些需要实测。</p></div><footer class="chapter-footer"><a href="#report00">← 00_项目简介</a><a href="#report02">02_整关结论 →</a></footer></section><section class="view report-view" id="report02" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">02_</span>整关结论</h1></header><div class="prose"><h2>核心结论</h2>
+<p><strong>Mountain Trek 通过轮换压力类型，反复使用同一套毛线与物理能力；收藏支路再为熟悉主线的玩家增加不同层次的观察要求。</strong></p>
+<table>
+<thead>
+<tr>
+<th>结论</th>
+<th>关卡证据</th>
+<th>设计意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>递进发生在能力的使用条件上</td>
+<td>B01 慢速复习 → B05 多步组合 → B06 限时执行 → B07 空间统筹</td>
+<td>让玩家持续调用既有能力，降低新规则负担</td>
+</tr>
+<tr>
+<td>演示与主动应用相互连接</td>
+<td>孢子从遭遇现象变成取船工具；鸟压枝后，玩家通过毛线牵拉重物复现</td>
+<td>知道规则与能够按需使用规则之间，有明确的实践环节</td>
+</tr>
+<tr>
+<td>动作高潮后改变挑战类型</td>
+<td>B06 追逐结束后进入 B07 多层谜题</td>
+<td>释放紧迫感，同时保留内容密度</td>
+</tr>
+<tr>
+<td>环境变化服务不止一个目标</td>
+<td>杠杆两种配重；木料先造成危险、再搭出通路并露出收藏空间</td>
+<td>同一套场景关系可以产生多个局部目标</td>
+</tr>
+<tr>
+<td>收藏拓展“怎样看空间”</td>
+<td>C02 看上方、C03 换状态、C04 找前置、C05 回头看</td>
+<td>额外探索不完全依赖距离或遮挡</td>
+</tr>
+</tbody>
+</table>
+<h2>需要保留的判断</h2>
+<p>本关的张弛并不是每段越来越难。鱼船与滑翔都带来运动方式变化，但不能因为画面速度快就认定操作复杂；B07 操作未必最难，却有较高的路径和资源推理要求。</p>
+<p>叙事作为第二条积累线存在：走近人物影像后自动呈现、化为白光并被收集，通关后照片入册。它解释旅程留下什么，但不是本案的主要篇幅。</p>
+<p>最值得继续验证的是：<strong>孢子因果是否足够清楚、追逐的危险是否提前可读、B07 毛线不足是否能帮助玩家修正路线，以及 C05 是否给出了足够的回看理由。</strong></p></div><footer class="chapter-footer"><a href="#report01">← 01_研究问题</a><a href="#report03">03_整关流程图 →</a></footer></section><section class="view report-view" id="report03" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">03_</span>整关流程图</h1></header><div class="prose"><p>下方脑图按 <strong>B00 → B09</strong> 自上而下排列。每个阶段展开其局部问题与重要标记；收藏支路附在所属阶段，不与必经通关目标混排。它表达体验顺序，不表示地图比例、距离或真实朝向。</p></div><div class="mindmap" aria-label="Mountain Trek 整关流程脑图"><div class="mind-root">Mountain Trek<small>主线 B00 → B09</small></div><ol class="mind-branches"><li><a class="mind-beat" href="#B00"><b>B00</b>环境与方向建立</a><ul><li>出生树枝 → 下行落地</li><li>左路受限，向右推进</li></ul></li><li><a class="mind-beat" href="#B01"><b>B01</b>基础能力低风险复习</a><ul><li>P01 抓取与套索推进</li><li>P02 系结与物体转移</li><li>P03 洞穴攀爬</li></ul></li><li><a class="mind-beat" href="#B02"><b>B02</b>威胁建立与规则演示</a><ul><li>P01 下滑、落石与跨水</li><li>P02 首遇土拨鼠，回撤开放上路</li><li>支路 C01：低处下探</li></ul></li><li><a class="mind-beat" href="#B03"><b>B03</b>孢子机制的主动应用</a><ul><li>P01 镜头揭示上方支路</li><li>P02 主动触发孢子并取船</li><li>支路 C02：鸟屋上方</li></ul></li><li><a class="mind-beat" href="#B04"><b>B04</b>鱼船事件与节奏转换</a><ul><li>P01 鱼船牵引事件</li><li>规则：持续按发射毛线，松开死亡</li></ul></li><li><a class="mind-beat" href="#B05"><b>B05</b>综合解谜与操作组合</a><ul><li>P01 重物运输与杠杆配重</li><li>P02 系结、下降与连续摆荡</li><li>支路 C03：切换杠杆状态</li></ul></li><li><a class="mind-beat" href="#B06"><b>B06</b>高压追逐与威胁收束</a><ul><li>P01 连续跨水追逐</li><li>收束：攀上根系，动物坠落</li></ul></li><li><a class="mind-beat" href="#B07"><b>B07</b>大型综合空间谜题</a><ul><li>P01 木桶与多层出口</li><li>错误路线：左上绕行，毛线不足</li><li>支路 C04：释放并运输石头</li></ul></li><li><a class="mind-beat" href="#B08"><b>B08</b>动态环境机关组合</a><ul><li>P01 鸟示范与重物牵枝</li><li>P02 塑料袋滑翔</li><li>P03 木料避险与路径生成</li><li>支路 C05：回看空仓</li></ul></li><li><a class="mind-beat" href="#B09"><b>B09</b>终点奖励与记忆回收</a><ul><li>毛线蝴蝶终点奖励</li><li>通关后：照片入册，可翻看</li></ul></li></ol></div><p class="muted">支路返回所属主线；回忆只作为节点标记，不将其视为通关必需解法。脑图节点可跳转详细分析。</p><p><a class="download-link" href="Mountain_Trek_整关流程.xmind" download>下载可编辑 XMind 脑图 ↗</a></p><footer class="chapter-footer"><a href="#report02">← 02_整关结论</a><a href="#report04">04_机制递进表 →</a></footer></section><section class="view report-view" id="report04" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">04_</span>机制递进表</h1></header><div class="prose"><table>
+<thead>
+<tr>
+<th>机制／能力</th>
+<th>低压力接触与提示</th>
+<th>发展与组合</th>
+<th>后续检验或变化</th>
+<th>递进轴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>套索与摆荡</td>
+<td>B01 连接点推进</td>
+<td>B02 下滑与跨水；B05 系结后下降接下一点</td>
+<td>B06 追逐中连续执行</td>
+<td>可决策时间、衔接次数、失败后果</td>
+</tr>
+<tr>
+<td>系结成桥／弹跳</td>
+<td>B01 高处目标与物体转移</td>
+<td>B03 隐藏支路；B05 重物运输</td>
+<td>B07 运石支线与毛线资源管理</td>
+<td>从局部可达性到运输和整体路线</td>
+</tr>
+<tr>
+<td>物体推拉</td>
+<td>B01 支撑物改变倒木</td>
+<td>B05 重物运输＋杠杆配重</td>
+<td>B07 木桶垫脚、石头运输；B08 重物牵枝</td>
+<td>物体的中间位置和最终位置都参与解题</td>
+</tr>
+<tr>
+<td>攀爬根系</td>
+<td>B01 发光表面提示</td>
+<td>B02/B03 高处通行</td>
+<td>B06 追逐末尾脱离威胁；B07 多层路径</td>
+<td>从单动作复习到关键出口动作</td>
+</tr>
+<tr>
+<td>孢子与敌人关系</td>
+<td>B02 首次遭遇中的环境事件</td>
+<td>B03 接触蘑菇后的重复暗示</td>
+<td>B03 主动踩踏驱退、取得船</td>
+<td>被动观察转为主动利用；不虚构后续孢子考试</td>
+</tr>
+<tr>
+<td>动态物体改变道路</td>
+<td>B01 倒木；B05 杠杆反馈</td>
+<td>B08 鸟压枝、重物牵拉</td>
+<td>B08 木料滚落：威胁转为通路</td>
+<td>同一对象在过程中的功能变化</td>
+</tr>
+<tr>
+<td>借助移动载体</td>
+<td>B04 鱼船</td>
+<td>B08 塑料袋滑翔</td>
+<td>两者均需持续按住发射毛线；滑翔不能左右控制</td>
+<td>熟悉输入的情境变化，不等同新增可控飞行能力</td>
+</tr>
+<tr>
+<td>空间探索</td>
+<td>C01 下探</td>
+<td>C02 上方支路、C03 配重切换</td>
+<td>C04 前置运输链、C05 事件后回看</td>
+<td>观察方向、状态理解和路径规划</td>
+</tr>
+</tbody>
+</table>
+<p>“复习”是本关中的功能，不意味着这些能力在全游戏首次出现。不同机制的成熟程度不一致，不应硬套每条机制都有完整的四阶段教学。</p></div><footer class="chapter-footer"><a href="#report03">← 03_整关流程图</a><a href="#report05">05_节奏曲线 →</a></footer></section><section class="view report-view" id="report05" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">05_</span>节奏曲线</h1></header><div class="prose"><div class="curve-scroll"><svg class="rhythm-plot" viewBox="0 0 960 310" role="img" aria-labelledby="curve-title curve-desc"><title id="curve-title">整关认知、操作和即时威胁曲线</title><desc id="curve-desc">按十个阶段等距排列的相对负荷示意，非实测。追逐阶段操作和威胁最高，大型谜题阶段认知最高。</desc><line x1="50" y1="260" x2="922" y2="260" stroke="#d5ddce"/><text x="15" y="265" fill="#62745f" font-size="14">低</text><line x1="50" y1="156" x2="922" y2="156" stroke="#d5ddce"/><text x="15" y="161" fill="#62745f" font-size="14">中</text><line x1="50" y1="52" x2="922" y2="52" stroke="#d5ddce"/><text x="15" y="57" fill="#62745f" font-size="14">高</text><polyline points="60,260 154,208 248,156 342,156 436,208 530,156 624,208 718,52 812,156 906,260" fill="none" stroke="#46715b" stroke-width="3" stroke-dasharray=""/><circle cx="60" cy="260" r="4" fill="#46715b"/><circle cx="154" cy="208" r="4" fill="#46715b"/><circle cx="248" cy="156" r="4" fill="#46715b"/><circle cx="342" cy="156" r="4" fill="#46715b"/><circle cx="436" cy="208" r="4" fill="#46715b"/><circle cx="530" cy="156" r="4" fill="#46715b"/><circle cx="624" cy="208" r="4" fill="#46715b"/><circle cx="718" cy="52" r="4" fill="#46715b"/><circle cx="812" cy="156" r="4" fill="#46715b"/><circle cx="906" cy="260" r="4" fill="#46715b"/><polyline points="60,260 154,208 248,156 342,156 436,156 530,104 624,52 718,156 812,156 906,260" fill="none" stroke="#9b742b" stroke-width="3" stroke-dasharray="7 4"/><circle cx="60" cy="260" r="4" fill="#9b742b"/><circle cx="154" cy="208" r="4" fill="#9b742b"/><circle cx="248" cy="156" r="4" fill="#9b742b"/><circle cx="342" cy="156" r="4" fill="#9b742b"/><circle cx="436" cy="156" r="4" fill="#9b742b"/><circle cx="530" cy="104" r="4" fill="#9b742b"/><circle cx="624" cy="52" r="4" fill="#9b742b"/><circle cx="718" cy="156" r="4" fill="#9b742b"/><circle cx="812" cy="156" r="4" fill="#9b742b"/><circle cx="906" cy="260" r="4" fill="#9b742b"/><polyline points="60,260 154,260 248,104 342,156 436,104 530,156 624,52 718,208 812,156 906,260" fill="none" stroke="#b84430" stroke-width="3" stroke-dasharray=""/><circle cx="60" cy="260" r="4" fill="#b84430"/><circle cx="154" cy="260" r="4" fill="#b84430"/><circle cx="248" cy="104" r="4" fill="#b84430"/><circle cx="342" cy="156" r="4" fill="#b84430"/><circle cx="436" cy="104" r="4" fill="#b84430"/><circle cx="530" cy="156" r="4" fill="#b84430"/><circle cx="624" cy="52" r="4" fill="#b84430"/><circle cx="718" cy="208" r="4" fill="#b84430"/><circle cx="812" cy="156" r="4" fill="#b84430"/><circle cx="906" cy="260" r="4" fill="#b84430"/><a href="#B00"><text x="60" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B00</text></a><a href="#B01"><text x="154" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B01</text></a><a href="#B02"><text x="248" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B02</text></a><a href="#B03"><text x="342" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B03</text></a><a href="#B04"><text x="436" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B04</text></a><a href="#B05"><text x="530" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B05</text></a><a href="#B06"><text x="624" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B06</text></a><a href="#B07"><text x="718" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B07</text></a><a href="#B08"><text x="812" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B08</text></a><a href="#B09"><text x="906" y="295" text-anchor="middle" font-family="monospace" font-size="14" fill="#415a45">B09</text></a></svg></div><div class="curve-legend"><span>● 认知负荷</span><span>┄ 操作负荷</span><span>● 即时威胁</span></div><h2>分开看三种负荷</h2>
+<ul>
+<li><strong>认知负荷：</strong> 需要同时理解多少关系，解法是否需要多步规划。</li>
+<li><strong>操作负荷：</strong> 跳跃、套索、摆荡与输入衔接是否要求稳定执行。</li>
+<li><strong>即时威胁：</strong> 玩家能否停下来观察，还是必须立即作出动作。</li>
+</ul>
+<p>曲线采用相对等级，横轴以阶段等距排列，<strong>不代表各阶段实际时长，也不是玩家实测评分</strong>。B05、B08 内部存在短时起伏，单个阶段点只用于概括。</p>
+<h2>关键转折</h2>
+<table>
+<thead>
+<tr>
+<th>转折</th>
+<th>变化</th>
+<th>对体验的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B01 → B02</td>
+<td>下滑速度、落石与落水风险进入</td>
+<td>低压复习转向反应与危险判断</td>
+</tr>
+<tr>
+<td>B02 → B03</td>
+<td>敌人仍在，但孢子可以主动使用</td>
+<td>在威胁中恢复一定控制感</td>
+</tr>
+<tr>
+<td>B03 → B04</td>
+<td>取船解谜切入移动载体事件</td>
+<td>从布置与接近转到持续输入和速度体验</td>
+</tr>
+<tr>
+<td>B05 → B06</td>
+<td>相近动作进入持续追逐</td>
+<td>主要抬升执行压力，不依赖复杂新解法</td>
+</tr>
+<tr>
+<td>B06 → B07</td>
+<td>追击解除，多层空间问题开始</td>
+<td>即时威胁下降，认知负荷上升</td>
+</tr>
+<tr>
+<td>B07 → B08 → B09</td>
+<td>出洞、短机关、局部危险，再结束挑战</td>
+<td>通过开阔场景与短循环逐步收束</td>
+</tr>
+</tbody>
+</table></div><footer class="chapter-footer"><a href="#report04">← 04_机制递进表</a><a href="#report07">07_详细关卡分析 →</a></footer></section><section class="view report-view" id="report07" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">07_</span>详细关卡分析</h1></header><div class="prose"><p>按体验顺序阅读 B00–B09。各段保留 <strong>目标、受阻局面、解决过程、状态变化、引导、失败与设计作用</strong>；复杂空间配标注图，动态过程使用原视频。</p>
+<p>图中箭头与颜色沿用实际标注，含义见各图说明；同一底图上的不同解法不会被当作实拍的前后状态。未知尺寸、精确时长和存档判定不补造。</p></div><div class="beat-grid"><a href="#B00" class="beat-card"><span class="beat-number">B00</span><h3>环境与方向建立</h3><p>先让玩家知道往哪里走，再让玩家决定怎样过去。</p><small>方向 · 氛围</small></a><a href="#B01" class="beat-card"><span class="beat-number">B01</span><h3>基础能力低风险复习</h3><p>用低压力的小问题，重新唤起毛线与物体操作。</p><small>复习 · 组合</small></a><a href="#B02" class="beat-card"><span class="beat-number">B02</span><h3>威胁建立与规则演示</h3><p>落石限制路线，快速滑行压缩反应时间；敌人迫使玩家重新阅读空间。</p><small>危险 · 因果</small></a><a href="#B03" class="beat-card"><span class="beat-number">B03</span><h3>孢子机制的主动应用</h3><p>同一规则从被动看见，转为玩家主动制造的解决方案。</p><small>观察转为主动</small></a><a href="#B04" class="beat-card"><span class="beat-number">B04</span><h3>鱼船事件与节奏转换</h3><p>固定支点变成移动载体，一次持续输入带来明显的节奏换挡。</p><small>事件 · 持续输入</small></a><a href="#B05" class="beat-card"><span class="beat-number">B05</span><h3>综合解谜与操作组合</h3><p>先让玩家组合解法，再要求动作衔接稳定，为追逐做准备。</p><small>配重 · 连续操作</small></a><a href="#B06" class="beat-card"><span class="beat-number">B06</span><h3>高压追逐与威胁收束</h3><p>熟悉动作遇上时间压力：考验的是迅速、连续地执行。</p><small>反应 · 动作峰值</small></a><a href="#B07" class="beat-card"><span class="beat-number">B07</span><h3>大型综合空间谜题</h3><p>追逐后的放松来自思考时间变多，空间问题本身依然复杂。</p><small>路径 · 资源约束</small></a><a href="#B08" class="beat-card"><span class="beat-number">B08</span><h3>动态环境机关组合</h3><p>鸟先展示因果，玩家再用毛线复现；环境先成为危险，再成为通路。</p><small>演示 · 环境变化</small></a><a href="#B09" class="beat-card"><span class="beat-number">B09</span><h3>终点奖励与记忆回收</h3><p>终点蝴蝶结束动作挑战，相册把一路收集的记忆留存下来。</p><small>终点 · 相册</small></a></div><footer class="chapter-footer"><a href="#report05">← 05_节奏曲线</a><a href="#report08">8_视觉与听觉引导 →</a></footer></section><section class="view report-view" id="report08" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">8_</span>视觉与听觉引导</h1></header><div class="prose"><h2>视觉引导：先让可行信息进入视野</h2>
+<table>
+<thead>
+<tr>
+<th>手段</th>
+<th>实际案例</th>
+<th>作用</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空间开合与色调</td>
+<td>暖色林地、阴暗洞穴、B08 再次出洞</td>
+<td>建立段落差异，改变探索的空间感</td>
+<td>来自截图与脑图，不等同每处明亮都安全</td>
+</tr>
+<tr>
+<td>路线阻挡</td>
+<td>起点左侧树干、B02 落石、暂时受阻的上路</td>
+<td>控制接触信息的顺序</td>
+<td>不自动说明所有玩家都能找到正确路线</td>
+</tr>
+<tr>
+<td>可交互表面</td>
+<td>根系亮点、红色系结点、提前可见的塑料袋</td>
+<td>从背景中区分可尝试对象</td>
+<td>根系亮点与回忆白光用途不同</td>
+</tr>
+<tr>
+<td>镜头揭示</td>
+<td>B03 到达树枝，镜头上移露出高处结点与鸟屋</td>
+<td>在主线推进中给予支路线索</td>
+<td>触发位置由用户标注确认</td>
+</tr>
+<tr>
+<td>动态因果示范</td>
+<td>鸟压枝、鸟飞走后回升；杠杆受重物影响</td>
+<td>通过状态变化提示解法关系</td>
+<td>鸟直接施重，玩家用毛线间接牵拉，操作形式并不完全相同</td>
+</tr>
+<tr>
+<td>动作预警</td>
+<td>脑图记录追逐前晃动；鱼在套取前表现异常</td>
+<td>提示状态即将变化</td>
+<td>预警提前量及是否足够尚未测量</td>
+</tr>
+</tbody>
+</table>
+<h2>声音组织：空间层、事件层与收束层</h2>
+<p>以下“山林主题”“洞穴主题”“追逐主题”是原脑图的听感标签，<strong>不是已核验的正式曲名</strong>。视频保留原声，文字不声称已重新听辨乐器或触发逻辑。</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>原记录的声音变化</th>
+<th>分析作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B00–B01</td>
+<td>温暖山林主题延续</td>
+<td>建立轻松基准，避免抢占基础操作注意力</td>
+</tr>
+<tr>
+<td>B02 入洞／初遇敌人</td>
+<td>山林转静谧洞穴，再切激扬追逐</td>
+<td>同时标记空间收窄与危险升级</td>
+</tr>
+<tr>
+<td>B03 暂时脱险</td>
+<td>旋律关系延续，配器转向鼓点</td>
+<td>威胁持续，但首次冲击减弱；不推定游戏检测到玩家已经掌握规则</td>
+</tr>
+<tr>
+<td>B04 鱼船</td>
+<td>音乐重新激扬</td>
+<td>强化突发事件与速度体验</td>
+</tr>
+<tr>
+<td>B05 组合解谜</td>
+<td>上段余韵逐渐转回洞穴主题</td>
+<td>从事件节奏过渡到观察与布置</td>
+</tr>
+<tr>
+<td>B06 追逐</td>
+<td>追逐主题与连续动作并行</td>
+<td>强化即时压力；结束瞬间的收束方式留空</td>
+</tr>
+<tr>
+<td>B07／B08</td>
+<td>洞穴主题，出洞后返回山林主题</td>
+<td>从收敛思考回到开阔环境</td>
+</tr>
+<tr>
+<td>B09</td>
+<td>原记录称返回游戏初始主题</td>
+<td>提供熟悉感，与终点奖励共同收束</td>
+</tr>
+</tbody>
+</table>
+<p>声音变化与画面事件同步，不足以证明底层一定按位置触发。是否淡入淡出、持续多久、失败后重播哪些声音，仍未核验。</p></div><footer class="chapter-footer"><a href="#report07">← 07_详细关卡分析</a><a href="#report09">9_收藏品与支路 →</a></footer></section><section class="view report-view" id="report09" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">9_</span>收藏品与支路</h1></header><div class="prose"><h2>五枚纽扣：五种额外观察要求</h2>
+<table>
+<thead>
+<tr>
+<th>收藏品</th>
+<th>位置与获取要求</th>
+<th>相比主线额外考验什么</th>
+<th>可能错过的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C01 · B02</td>
+<td>水边低处支路，控制毛线下探与摆荡</td>
+<td>对高度和绳长的操作判断</td>
+<td>下滑过快，注意力集中在避险</td>
+</tr>
+<tr>
+<td>C02 · B03</td>
+<td>鸟屋附近上方隐藏路线</td>
+<td>观察镜头揭示的连接点关系</td>
+<td>只沿向右主路推进</td>
+</tr>
+<tr>
+<td>C03 · B05</td>
+<td>将配重调整到右侧，从左侧进入杠杆下方</td>
+<td>使用不同于通关的机关状态</td>
+<td>打通主路后直接离开</td>
+</tr>
+<tr>
+<td>C04 · B07</td>
+<td>右上释放石头，经下层搭桥运至左侧垫脚</td>
+<td>前置搜索、运输规划与空间联结</td>
+<td>看见纽扣却没有找到完整因果链</td>
+</tr>
+<tr>
+<td>C05 · B08</td>
+<td>木料释放后回到清空的储木空间</td>
+<td>在场景改变后重新观察已走空间</td>
+<td>被新形成的前路吸引，未回看</td>
+</tr>
+</tbody>
+</table>
+<p>收藏要求总体从局部下探延伸到空间关系和回溯，但<strong>不是严格逐枚变难</strong>。C03 路径较近却要求换状态，C05 操作链未必最长，关键是想到回头。</p>
+<h2>奖励分层</h2>
+<p>纽扣服务可选探索，毛线蝴蝶服务终点完成，回忆服务叙事积累。三者不合并成同一种奖励，也没有证据表明它们会提升能力。</p>
+<p>人物影像在走近时自动出现，随后化为白光被收集。通关后照片进入相册，可以翻看。已有终点与相册封面图；相册封面不作为某张内页照片或具体人物故事的证据。</p></div><div class="closing-pair"><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B09_butterfly_reward.png" data-caption="终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。" aria-label="放大查看：终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。"><img src="assets/B09_butterfly_reward.png" alt="终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B09_album_cover.png" data-caption="相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。" aria-label="放大查看：相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。"><img src="assets/B09_album_cover.png" alt="相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。</figcaption></figure></div></div><footer class="chapter-footer"><a href="#report08">← 8_视觉与听觉引导</a><a href="#report10">10_失败与恢复 →</a></footer></section><section class="view report-view" id="report10" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">10_</span>失败与恢复</h1></header><div class="prose"><h2>不同失败，产生不同成本</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>例子</th>
+<th>需要恢复什么</th>
+<th>当前可确定的范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解法无效</td>
+<td>B07 毛线不足、无法把物体推过地形</td>
+<td>调整路线、物体位置或系结</td>
+<td>图示确认存在限制；不一概等同死亡</td>
+</tr>
+<tr>
+<td>动作失误</td>
+<td>水域摆荡、连续连接失败</td>
+<td>重新跨越或从存档恢复</td>
+<td>具体哪些触水即死、哪些只拖慢未逐点测量</td>
+</tr>
+<tr>
+<td>敌人接触</td>
+<td>孢子区靠近失败、追逐被抓住</td>
+<td>重新应对威胁</td>
+<td>原记录有挑战前后补给／存档，确切重置范围未知</td>
+</tr>
+<tr>
+<td>动态物体伤害</td>
+<td>挡路木头、木桶、滚落木料</td>
+<td>避开运动路径后重试</td>
+<td>风险来自原记录；没有精确伤害触发框数据</td>
+</tr>
+<tr>
+<td>持续输入中断</td>
+<td>鱼船松开“发射毛线”</td>
+<td>失败后重新进行对应过程</td>
+<td>用户明确确认松开即死亡；复活位置未单独确认</td>
+</tr>
+<tr>
+<td>载体连接中断</td>
+<td>塑料袋需持续按住“发射毛线”</td>
+<td>具体结果待补</td>
+<td>不能直接套用鱼船的死亡规则</td>
+</tr>
+<tr>
+<td>错过可选目标</td>
+<td>未看见隐藏支路、事件后未回看</td>
+<td>是否能原路补收取决于回返条件</td>
+<td>重玩入口、持久保存规则未核验</td>
+</tr>
+</tbody>
+</table>
+<h2>补给与存档的分布逻辑</h2>
+<p>原脑图记录补给／存档常出现在落水、敌人遭遇、鱼船、追逐、大型谜题与短机关的前后。其设计作用可以理解为“准备 → 挑战 → 安全确认”，但不同段落的前后点可能重合，不能将其直接相加得到数量。</p>
+<table>
+<thead>
+<tr>
+<th>原记录位置</th>
+<th>对恢复的意义</th>
+<th>仍待确认</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B01 多次补给</td>
+<td>支持基础复习与场景交替</td>
+<td>精确数量、是否都可复活</td>
+</tr>
+<tr>
+<td>B02/B03 危险或敌人前后</td>
+<td>缩短认识危险和尝试规则的回退距离</td>
+<td>谜题物体与孢子状态如何重置</td>
+</tr>
+<tr>
+<td>B04/B06 事件与追逐前后</td>
+<td>使集中压力段具备重试边界</td>
+<td>是否重做前置取船、是否重播演出</td>
+</tr>
+<tr>
+<td>B07 大谜题前后</td>
+<td>接续追逐结束并确认谜题完成</td>
+<td>木桶、石头、系结恢复规则</td>
+</tr>
+<tr>
+<td>B08 各短谜题后</td>
+<td>避免多个动态风险串成较长惩罚链</td>
+<td>实际重做耗时</td>
+</tr>
+</tbody>
+</table>
+<p>复活点近，不一定意味着重试成本低。应分别记录重跑、重新搬物体、重复演出和重新收集所需时间。当前没有这些测量值，因此不宣称本关惩罚一定宽松。</p></div><footer class="chapter-footer"><a href="#report09">← 9_收藏品与支路</a><a href="#report11">11_优点与问题 →</a></footer></section><section class="view report-view" id="report11" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">11_</span>优点与问题</h1></header><div class="prose"><h2>有材料支持的优点</h2>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>证据</th>
+<th>为什么成立</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础能力的使用条件持续变化</td>
+<td>B01、B05、B06、B07</td>
+<td>同一套动作分别承担复习、组合、追逐和规划</td>
+</tr>
+<tr>
+<td>环境反馈能承载教学</td>
+<td>B08 鸟在／鸟离开／玩家牵枝三张图</td>
+<td>状态与条件的关系可以直接比较</td>
+</tr>
+<tr>
+<td>主线与收藏共享机关但目的不同</td>
+<td>B05 杠杆的两种配重图</td>
+<td>同一谜题提供额外理解层次，避免另做完全独立的支线系统</td>
+</tr>
+<tr>
+<td>高压后仍保留内容密度</td>
+<td>B06 → B07</td>
+<td>通过改变压力类型释放，而非简单减少内容</td>
+</tr>
+<tr>
+<td>动态事件产生后续探索价值</td>
+<td>B08 木料与 C05</td>
+<td>环境改变同时生成前路与新可见空间</td>
+</tr>
+</tbody>
+</table>
+<h2>潜在问题，需要验证</h2>
+<table>
+<thead>
+<tr>
+<th>风险假设</th>
+<th>依据</th>
+<th>验证方式</th>
+<th>什么结果才支持修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首次孢子因果被追逐遮蔽</td>
+<td>撤退时玩家可能只关注角色与敌人距离</td>
+<td>看首次玩家能否说出动物为何后退、B03 如何尝试</td>
+<td>多次将停追归因为任意安全边界，且不能主动复现</td>
+</tr>
+<tr>
+<td>追逐晃动影响关键点可读性</td>
+<td>原记录存在持续晃动与连续套索要求</td>
+<td>区分“没看见连接点”和“看见但操作失败”</td>
+<td>主要失败来自信息不可见，而非已知动作执行</td>
+</tr>
+<tr>
+<td>毛线不足的反馈不足以解释错误路线</td>
+<td>B07 紫色绕行路线确实受长度限制</td>
+<td>观察玩家是否能定位占线原因并改道</td>
+<td>重复同一路径却没有获得新信息</td>
+</tr>
+<tr>
+<td>C05 回看线索不足</td>
+<td>新通路向前，奖励在身后清空空间</td>
+<td>观察玩家第一次事件后是否注意空间变化</td>
+<td>大量玩家知道可收集，仍完全未感知回看机会</td>
+</tr>
+<tr>
+<td>持续按住输入可能造成意外松手失败</td>
+<td>鱼船规则确认；滑翔也需持续按住</td>
+<td>询问玩家是否知道要持续按住，是否因疲劳或误放中断</td>
+<td>已理解规则仍频繁因持续输入负担失败</td>
+</tr>
+</tbody>
+</table>
+<p>以上不是已经实测的缺陷。没有新玩家行为数据时，不把“可能不清楚”写成“设计失败”。</p></div><footer class="chapter-footer"><a href="#report10">← 10_失败与恢复</a><a href="#report12">12_可迁移原则 →</a></footer></section><section class="view report-view" id="report12" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">12_</span>可迁移原则</h1></header><div class="prose"><table>
+<thead>
+<tr>
+<th>原则</th>
+<th>适用条件</th>
+<th>本关例子</th>
+<th>迁移时需注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>先展示因果，再要求主动复现</td>
+<td>规则能通过环境状态被看见</td>
+<td>孢子、鸟压枝</td>
+<td>示范中的关键原因不能被更强的危险或镜头运动遮住</td>
+</tr>
+<tr>
+<td>用约束变化增加深度</td>
+<td>玩家已经基本掌握核心动作</td>
+<td>同一套索动作在复习、组合和追逐中复用</td>
+<td>同时增加距离、时限、遮挡会难以判断失败原因</td>
+</tr>
+<tr>
+<td>分开调节思考与即时压力</td>
+<td>有动作段与推理段交替</td>
+<td>B06 → B07</td>
+<td>无追击不等于无伤害，也不等于认知简单</td>
+</tr>
+<tr>
+<td>同一机关支持不同目标状态</td>
+<td>可逆物理对象、额外奖励明确</td>
+<td>杠杆通关与纽扣</td>
+<td>不应让可选尝试不可逆地破坏主线</td>
+</tr>
+<tr>
+<td>场景改变后，再奖励一次观察</td>
+<td>环境事件显著改变可进入区域</td>
+<td>清空储木空间后回看 C05</td>
+<td>应让空间变化有可感知结果，避免只能碰运气</td>
+</tr>
+<tr>
+<td>失败要为下一次尝试增加信息</td>
+<td>谜题允许试错和局部恢复</td>
+<td>路径限制、物体状态变化</td>
+<td>只重复死亡演出而不解释原因，会增加无效成本</td>
+</tr>
+<tr>
+<td>叙事留存可以位于动作之外</td>
+<td>不希望回忆承担能力成长功能</td>
+<td>影像收集、照片入册</td>
+<td>不强制每道题插入演出，避免破坏动作节奏</td>
+</tr>
+</tbody>
+</table>
+<p>迁移单位是机制关系与使用条件，而不是照搬“放一只鸟”“放五枚纽扣”或相同场景外观。</p></div><footer class="chapter-footer"><a href="#report11">← 11_优点与问题</a><a href="#report13">13_如果重做 →</a></footer></section><section class="view report-view" id="report13" hidden><header class="chapter-header"><div class="eyebrow">MOUNTAIN TREK / LEVEL DESIGN STUDY</div><h1><span class="report-number">13_</span>如果重做</h1></header><div class="prose"><p>以下是<strong>基于现有材料提出的改版假设</strong>，不是对原作功能的描述。优先保留 B00–B09 的张弛、核心毛线操作、孢子主动应用、B07 空间问题及五种收藏要求；先解决信息表达与恢复成本，再考虑改结构。</p>
+<h2>优先验证的改动</h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>修改位置</th>
+<th>提议</th>
+<th>预期收益</th>
+<th>代价与边界</th>
+<th>验证标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>B02 首次孢子演示</td>
+<td>微调镜头与事件节拍，让蘑菇破坏、孢子出现、动物反应在同一注意窗口内可见</td>
+<td>因果更容易被记住并迁移到 B03</td>
+<td>避免长时间锁镜头；不在追逐中强行夺走操作</td>
+<td>初次玩家能够解释原因，并尝试踩踏而非反复冲撞</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>B06 追逐</td>
+<td>保留晃动气氛，提供较低晃动选项；确认下一结点在起跳前可辨认</td>
+<td>让主要挑战落在执行而非看不清</td>
+<td>不自动放宽全部时机窗口</td>
+<td>记录不可见导致的失败占比，与动作失误分开比较</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>B07 毛线不足</td>
+<td>检查绷紧反馈、来源方向与多余系结是否可读，必要时加强局部提示</td>
+<td>帮助玩家修正路径和理解占线</td>
+<td>不直接画出正确路径，保留空间推理</td>
+<td>玩家能说出“为什么不足”，并产生不同于重复尝试的下一步</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>B08 木料与 C05</td>
+<td>在木料稳定后短暂保留空仓可见性，用自然空隙和光线提示空间改变</td>
+<td>增加回看机会</td>
+<td>不直接把纽扣高亮成必捡目标</td>
+<td>玩家注意到空仓，但仍需要主动选择回看</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>鱼船／塑料袋</td>
+<td>若测试证明持续输入形成负担，增加可选的保持连接方式</td>
+<td>降低无意松手的输入负担</td>
+<td>默认体验与规则说明要一致，不替玩家进行方向或解谜决策</td>
+<td>已理解规则的玩家因误松手失败减少，仍能理解连接状态</td>
+</tr>
+</tbody>
+</table>
+<h2>暂不改动的部分</h2>
+<p>不因攻略提供替代解法就强制封死 B01 的弹跳路线；不把 B07 简化成单向走廊；不为所有回忆补独立过场；不为了让收藏“越来越难”而把五枚纽扣拉成机械的难度阶梯。</p>
+<h2>小范围验证流程</h2>
+<p>先用现有版本观察首次游玩 → 记录具体误读、失败原因与重试耗时 → 每次只改一个关键变量 → 对照新的行为记录 → 保留有证据支持的变化。</p>
+<p>需要补录的数据包括首次解出时间、无效重复次数、连接点可见性、失败后重做内容与收藏发现路径。此处不预设样本结果或虚构改善百分比。</p></div><footer class="chapter-footer"><a href="#report12">← 12_可迁移原则</a></footer></section><section class="view chapter" id="B00" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B00</div><h1>环境与方向建立</h1><p class="chapter-thesis">先让玩家知道往哪里走，再让玩家决定怎样过去。</p><div class="pressure-tags"><span>认知<b>低</b></span><span>操作<b>低</b></span><span>即时威胁<b>低</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 从进入山林并取得角色控制，到面对第一组需要操作解决的路线阻碍。此处没有必要为了凑谜题而设 P。</p>
+<p>角色初始朝向右下，左侧被树干阻挡，向右构成自然推进方向。开阔山林、偏暖视觉和舒缓音乐先建立一个相对轻松的基准，随后洞穴的阴暗、收窄与威胁才有比较对象。</p>
+<p><strong>玩家行为：</strong> 观察 → 下到可行走区域 → 向右移动 → 接近第一处阻碍。成功反馈就是路径持续可见、角色能够推进。原记录未标出本段补给或收集，不据此断言本段一定没有回忆。</p>
+<p><strong>设计作用：</strong> 先减少方向选择，再引入操作选择。玩家尚未被要求同时理解地图、工具和敌人规则。</p></div><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B00_01_opening_annotated.png" data-caption="起点：沿树枝向右，再向下进入林地。" aria-label="放大查看：起点：沿树枝向右，再向下进入林地。"><img src="assets/B00_01_opening_annotated.png" alt="起点：沿树枝向右，再向下进入林地。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>起点：沿树枝向右，再向下进入林地。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B00_02_ground_annotated.png" data-caption="落地后的方向限制：左侧不可行，主路向右。" aria-label="放大查看：落地后的方向限制：左侧不可行，主路向右。"><img src="assets/B00_02_ground_annotated.png" alt="落地后的方向限制：左侧不可行，主路向右。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>落地后的方向限制：左侧不可行，主路向右。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B00_03_log_approach_annotated.png" data-caption="沿倒木跨越，进入前方交互区域。" aria-label="放大查看：沿倒木跨越，进入前方交互区域。"><img src="assets/B00_03_log_approach_annotated.png" alt="沿倒木跨越，进入前方交互区域。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>沿倒木跨越，进入前方交互区域。</figcaption></figure></div><footer class="chapter-footer"><a href="#report07">← 阶段索引</a><a href="#B01">基础能力低风险复习 →</a></footer></section><section class="view chapter" id="B01" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B01</div><h1>基础能力低风险复习</h1><p class="chapter-thesis">用低压力的小问题，重新唤起毛线与物体操作。</p><div class="pressure-tags"><span>认知<b>较低</b></span><span>操作<b>较低</b></span><span>即时威胁<b>低</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 第一组路线阻碍 → 林地与短洞穴交替 → 长洞穴入口。整体目标是把已有能力重新放回玩家手里；“复习”是本关功能判断，不意味着这些能力在全游戏首次出现。</p></div><article class="puzzle" id="B01-P01"><header class="puzzle-header"><span>B01-P01</span><h2>抓取、牵拉与套索推进</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B01_P01_before_memory.png" data-caption="操作前：支撑物与倒木；背景回忆在走近时自动出现。" aria-label="放大查看：操作前：支撑物与倒木；背景回忆在走近时自动出现。"><img src="assets/B01_P01_before_memory.png" alt="操作前：支撑物与倒木；背景回忆在走近时自动出现。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>操作前：支撑物与倒木；背景回忆在走近时自动出现。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B01_P01_after_annotated.png" data-caption="操作后：向左拖移支撑物，改变倒木姿态，沿其向右推进。" aria-label="放大查看：操作后：向左拖移支撑物，改变倒木姿态，沿其向右推进。"><img src="assets/B01_P01_after_annotated.png" alt="操作后：向左拖移支撑物，改变倒木姿态，沿其向右推进。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>操作后：向左拖移支撑物，改变倒木姿态，沿其向右推进。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 目标位置超出直接跳跃可达范围，环境中的支撑物或连接点提供其他可能。</li>
+<li><strong>解决过程：</strong> 观察物体与地形的支撑关系 → 抓取／牵拉相关物体 → 利用地形变化与上方连接点推进。</li>
+<li><strong>状态改变：</strong> 原本不可直接到达的路径变得可达。</li>
+<li><strong>引导：</strong> 高度不足排除纯跳跃，物体位置与连接点提供操作对象。</li>
+<li><strong>失败成本：</strong> 原记录未见明显死亡压力；无效尝试主要表现为不能抵达目标。</li>
+<li><strong>设计作用：</strong> 重新建立“环境可以改变”的意识，不只复习按键。</li>
+</ul>
+<p>【资料补充】开场可通过移走支撑石改变倒木状态。此细节支持“先改变环境再前进”的解题链。<a href="https://www.jeuxvideo.com/wikis-soluce-astuces/460121/solution-complete-unravel-chapitre-4-rando-en-montagne.htm">Jeuxvideo 关卡图文攻略</a></p></div></article><article class="puzzle" id="B01-P02"><header class="puzzle-header"><span>B01-P02</span><h2>系结结构与物体转移</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B01_P02_before_annotated.png" data-caption="①、②为系结点，方框为可移动石块，星号为目标树枝。" aria-label="放大查看：①、②为系结点，方框为可移动石块，星号为目标树枝。"><img src="assets/B01_P02_before_annotated.png" alt="①、②为系结点，方框为可移动石块，星号为目标树枝。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>①、②为系结点，方框为可移动石块，星号为目标树枝。</figcaption></figure><figure class="video-frame"><video controls preload="none" playsinline aria-label="搭桥与物体操作示范｜用户提供的完整小谜题片段"><source src="assets/B01_P02_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>搭桥与物体操作示范｜用户提供的完整小谜题片段<a class="original" href="assets/B01_P02_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 玩家需要取得更高落点，单纯跳跃不足；相邻连接点与可移动物体处于同一局部空间。</li>
+<li><strong>原记录路线：</strong> 连接两点 → 建立运送通路 → 转移物体至垫脚位置 → 跳上目标点。</li>
+<li><strong>状态改变：</strong> 系结先改变物体的运输条件，物体再改变角色的可达高度。</li>
+<li><strong>引导：</strong> 靠近的结点提示连接关系，目标高度提示需要额外手段。</li>
+<li><strong>失败成本：</strong> 主要是物体位置或路线不正确后进行调整。</li>
+<li><strong>设计作用：</strong> 把“系结”和“搬运”组成有目的的操作链。</li>
+</ul>
+<p>【资料补充】攻略还记录了直接使用弹跳绳到达高处的路线。因此这里不能写成“强制要求所有玩家搬运物体”，应称为脑图记录的一种解法。<a href="https://www.trueachievements.com/game/Unravel/walkthrough/6">TrueAchievements：开场替代解法</a></p></div></article><article class="puzzle" id="B01-P03"><header class="puzzle-header"><span>B01-P03</span><h2>短洞穴通行与攀爬</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B01_P03_log_pull.png" data-caption="套索牵拉挡路木头，打开前进路线。" aria-label="放大查看：套索牵拉挡路木头，打开前进路线。"><img src="assets/B01_P03_log_pull.png" alt="套索牵拉挡路木头，打开前进路线。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>套索牵拉挡路木头，打开前进路线。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B01_P03_climb.png" data-caption="根系上的亮点提示攀爬；简单路线用单图说明。" aria-label="放大查看：根系上的亮点提示攀爬；简单路线用单图说明。"><img src="assets/B01_P03_climb.png" alt="根系上的亮点提示攀爬；简单路线用单图说明。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>根系上的亮点提示攀爬；简单路线用单图说明。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 路线进入短洞穴，需要从低处向上通过。</li>
+<li><strong>解决过程：</strong> 识别表面带亮光的可攀爬藤蔓／根系 → 攀上高处 → 返回林地推进。</li>
+<li><strong>状态改变：</strong> 从受限低处进入上层通路。</li>
+<li><strong>引导：</strong> 可攀爬表面与一般背景有视觉差别。</li>
+<li><strong>设计作用：</strong> 在空间收窄、照明变化中复习垂直移动。</li>
+</ul>
+<p><strong>过渡补充。</strong> 攻略提及进入相邻洞段前需要拉倒挡路木头，并提示靠得过近可能被砸。本文把它暂记为本阶段过渡机关，精确归属待截图确认。这也意味着脑图中“唯一死亡点且无关操作”的说法应改成“整体低风险，局部动态物体仍可能造成死亡”。<a href="https://www.trueachievements.com/game/Unravel/walkthrough/6">TrueAchievements：挡路木头</a></p>
+<p><strong>视听与补给：</strong> 原记录中山林主题延续；林地与短洞穴反复过渡，至少两处补给。进入长洞穴时，明亮开阔向阴暗潮湿的变化承担阶段收束。</p></div></article><footer class="chapter-footer"><a href="#B00">← 环境与方向建立</a><a href="#B02">威胁建立与规则演示 →</a></footer></section><section class="view chapter" id="B02" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B02</div><h1>威胁建立与规则演示</h1><p class="chapter-thesis">落石限制路线，快速滑行压缩反应时间；敌人迫使玩家重新阅读空间。</p><div class="pressure-tags"><span>认知<b>中</b></span><span>操作<b>中</b></span><span>即时威胁<b>较高</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 进入长洞穴首段 → 首次动物遭遇 → 经改变后的上方路线离开遭遇空间。</p></div><article class="puzzle" id="B02-P01"><header class="puzzle-header"><span>B02-P01</span><h2>下滑、落石与水域推进</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B02_P01_route_annotated.png" data-caption="橙色为主线；蓝色为下探支路。图中标出滑落起点、系结与不稳定石块。" aria-label="放大查看：橙色为主线；蓝色为下探支路。图中标出滑落起点、系结与不稳定石块。"><img src="assets/B02_P01_route_annotated.png" alt="橙色为主线；蓝色为下探支路。图中标出滑落起点、系结与不稳定石块。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>橙色为主线；蓝色为下探支路。图中标出滑落起点、系结与不稳定石块。</figcaption></figure><figure class="video-frame"><video controls preload="none" playsinline aria-label="进入洞穴与前置滑落｜落石限制路线，滑行考验即时反应"><source src="assets/B02_P01_entry_slide.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>进入洞穴与前置滑落｜落石限制路线，滑行考验即时反应<a class="original" href="assets/B02_P01_entry_slide.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure><figure class="video-frame"><video controls preload="none" playsinline aria-label="跨水主路径｜连续移动补充示范"><source src="assets/B02_P01_route_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>跨水主路径｜连续移动补充示范<a class="original" href="assets/B02_P01_route_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 快速下滑把玩家送入需要摆荡通过的地段；可踩落石并非长期稳定平台。</li>
+<li><strong>解决过程：</strong> 判断连接点与落脚处 → 及时发射毛线、控制摆荡 → 离开不稳定落点 → 抵达另一侧。</li>
+<li><strong>状态改变：</strong> 从可慢慢试的地面移动转为需要留意时机的跨越。</li>
+<li><strong>引导：</strong> 上方道路限制、下滑方向和镜头前推共同压缩路线选择。</li>
+<li><strong>失败：</strong> 落水。原记录还列了被敌人抓住，但其是否发生在 P01 范围内待边界核对。</li>
+<li><strong>设计作用：</strong> 在已有操作上增加不稳定地形与后果，建立危险感。</li>
+</ul>
+<p><strong>C01 标记：</strong> 原记录称目标显眼且靠近主路径，获取位置刁钻，考绳长和摆荡控制。保留“主路附近的操作型可选收集”，不将“靠近主路”写成“必定会拿到”。可见程度会受到镜头与下滑时机影响，待截图确认。</p></div></article><article class="puzzle" id="B02-P02"><header class="puzzle-header"><span>B02-P02</span><h2>分叉路、被迫回撤与上路开放</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="首次遭遇｜回撤、环境变化与上路开放"><source src="assets/B02_P02_first_encounter.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>首次遭遇｜回撤、环境变化与上路开放<a class="original" href="assets/B02_P02_first_encounter.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 上方连接点被菌盖遮挡，下路出现追逐动物。</li>
+<li><strong>解决过程：</strong> 尝试下路 → 发现威胁 → 向左回撤 → 动物破坏菌盖并出现退缩反应 → 利用暴露的连接结构走上路。</li>
+<li><strong>状态改变：</strong> 首先看似能走的下路失去安全性；首先不能走的上路变为有效出口。</li>
+<li><strong>教学内容：</strong> 动物可以改变环境；蘑菇产生的孢子与动物后退建立因果线索；玩家仍需识别新开放的路线。</li>
+<li><strong>失败：</strong> 回撤不及时被抓住。</li>
+<li><strong>设计作用：</strong> 用短暂失控迫使玩家重新看待同一个场景，再通过路径开放恢复控制感。</li>
+</ul>
+<p><strong>证据边界：</strong> 脑图明确记录“孢子呛退”。外部攻略对首次停止追击也存在“光照边界”等不同措辞，因此首次退缩的精确因果不以攻略文字定案。更稳妥的表述是“破坏蘑菇、动物停追、上路开放共同构成演示；孢子驱退在 B03 被玩家主动应用”。动物统一沿用你的“土拨鼠”称呼，并注明为追逐啮齿动物；网络有 lemming、gopher 等叫法，暂不认定物种。<a href="https://www.gamepressure.com/unravel/level-4-mountain-trek-walkthrough/z98665">Gamepressure：首次遭遇及后续蘑菇</a></p>
+<p><strong>教学风险【分析】：</strong> 如果玩家一直盯着自己与敌人的距离，可能只学到“跑回去就安全”，没有注意孢子。这解释了为何 B03 的重复暗示仍有价值，但是否真的发生误读需要新玩家观察。</p>
+<p><strong>视听与补给：</strong> 原记录为山林主题切洞穴主题，遭遇时切追逐主题；两类危险前有补给并承担存档。具体触发时刻与同点关系尚未逐点核验。</p></div></article><footer class="chapter-footer"><a href="#B01">← 基础能力低风险复习</a><a href="#B03">孢子机制的主动应用 →</a></footer></section><section class="view chapter" id="B03" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B03</div><h1>孢子机制的主动应用</h1><p class="chapter-thesis">同一规则从被动看见，转为玩家主动制造的解决方案。</p><div class="pressure-tags"><span>认知<b>中</b></span><span>操作<b>中</b></span><span>即时威胁<b>中</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 脱离首次遭遇 → 上方连接点探索 → 再次进入动物附近 → 取得船。</p></div><article class="puzzle" id="B03-P01"><header class="puzzle-header"><span>B03-P01</span><h2>连接点推进与向上探索</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B03_P01_camera_reveal_annotated.png" data-caption="到达树枝处，镜头上移揭示隐藏道路；主路仍向右延伸。" aria-label="放大查看：到达树枝处，镜头上移揭示隐藏道路；主路仍向右延伸。"><img src="assets/B03_P01_camera_reveal_annotated.png" alt="到达树枝处，镜头上移揭示隐藏道路；主路仍向右延伸。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>到达树枝处，镜头上移揭示隐藏道路；主路仍向右延伸。</figcaption></figure><figure class="video-frame"><video controls preload="none" playsinline aria-label="纽扣②｜上方隐藏支路的获取示范"><source src="assets/B03_P01_button02_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>纽扣②｜上方隐藏支路的获取示范<a class="original" href="assets/B03_P01_button02_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 主路需要套索推进，上方还存在不立即属于主路径的连接关系。</li>
+<li><strong>解决过程：</strong> 沿主路到高处 → 镜头上移 → 看见上方结点 → 选择继续主线或系结向上探索。</li>
+<li><strong>状态改变：</strong> 原先未见的空间成为可到达分支。</li>
+<li><strong>引导：</strong> 镜头揭示与连接点关系共同提示隐藏路径。</li>
+<li><strong>失败与代价：</strong> 可错过 C02；原记录称从支路下来存在操作不当摔死的可能，具体地形待确认。</li>
+<li><strong>设计作用：</strong> 让玩家从“寻找出口”转为“主动多看一层空间”。</li>
+</ul>
+<p><strong>C02 标记：</strong> 上方支路型收集。鸟屋可用作定位地标，但精确所在结点待截图。<a href="https://gamerwalkthroughs.com/unravel/chapter-4-mountain-trek/">Gamer Walkthroughs：鸟屋附近第二收集物</a></p></div></article><article class="puzzle" id="B03-P02"><header class="puzzle-header"><span>B03-P02</span><h2>主动释放孢子并取得船</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="主动踩踏孢子、驱退动物并取船｜片段末尾有回忆影像"><source src="assets/B03_P02_spores_boat_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>主动踩踏孢子、驱退动物并取船｜片段末尾有回忆影像<a class="original" href="assets/B03_P02_spores_boat_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 船在动物控制的区域中，直接接近有被抓住的危险。</li>
+<li><strong>解决过程：</strong> 滑落时接触散发孢子的蘑菇，看到动物后退 → 主动踩踏／跳跃触发蘑菇 → 利用腾出的距离接近并牵出船。</li>
+<li><strong>状态改变：</strong> 威胁没有被消灭，但玩家能够暂时改变其站位，使关键物体可取得。</li>
+<li><strong>引导：</strong> 被动落到蘑菇上的再演示，连接此前看到的现象与现在能执行的动作。</li>
+<li><strong>失败：</strong> 进入威胁范围却没有有效维持驱退，可能被抓住。孢子作用时长、次数与范围留空。</li>
+<li><strong>设计作用：</strong> 从“看见事件”转成“按自己的需要制造事件”。</li>
+</ul>
+<p><strong>视听与补给：</strong> 原记录指出追逐音乐的旋律关系保留、配器转向鼓点，再遭遇未明显重切。其情绪效果可理解为威胁延续；不能由此反推游戏检测到了玩家已经掌握规则。遭遇前后各有一处补给／存档记录。</p>
+<p><strong>回忆标记【你已确认】：</strong> B03-P02 视频末尾出现回忆影像，走近自动触发，随后化为白光并被收集。</p></div></article><footer class="chapter-footer"><a href="#B02">← 威胁建立与规则演示</a><a href="#B04">鱼船事件与节奏转换 →</a></footer></section><section class="view chapter" id="B04" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B04</div><h1>鱼船事件与节奏转换</h1><p class="chapter-thesis">固定支点变成移动载体，一次持续输入带来明显的节奏换挡。</p><div class="pressure-tags"><span>认知<b>较低</b></span><span>操作<b>中</b></span><span>即时威胁<b>较高</b></span></div></header><div class="prose lead-prose"></div><article class="puzzle" id="B04-P01"><header class="puzzle-header"><span>B04-P01</span><h2>从乘船到借鱼移动</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="鱼船事件｜持续按住“发射毛线”，松开即死亡"><source src="assets/B04_P01_fish_boat_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>鱼船事件｜持续按住“发射毛线”，松开即死亡<a class="original" href="assets/B04_P01_fish_boat_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><p><strong>体验边界：</strong> 船可以被推进水中 → 水中鱼介入 → 借鱼移动 → 船损坏、角色到岸。</p>
+<ul>
+<li><strong>初始目标：</strong> 使用刚刚取得的船跨水。</li>
+<li><strong>事件链：</strong> 推船入水 → 鱼表现异常并跃出 → 使用毛线连接鱼 → 出现更快的牵引移动 → 船被撞破 → 到岸恢复推进。</li>
+<li><strong>状态改变：</strong> 运输方式从船承载角色，变成鱼参与驱动的事件化移动。</li>
+<li><strong>预告与反馈：</strong> 鱼的异常动作、跃出和音乐升高提供提示；速度、载具状态与落岸提供结果反馈。</li>
+<li><strong>操作与失败【你已确认】：</strong> 鱼船牵引阶段需要一直按住“发射毛线”按钮，松开此按钮会导致死亡。具体设备键位及底层死亡判定原因未确认，不作推定。</li>
+<li><strong>设计作用：</strong> 套索的对象从固定结点变成活体移动对象，制造新奇感；输入时间线相对集中，打断此前反复观察和布置的节奏。</li>
+</ul>
+<p>【资料补充】攻略把套取部位描述为鱼背上的鱼饵，说明“套住鱼”可进一步精确到可交互点；这不等于已经核验输入窗口或自动演出比例。<a href="https://www.trueachievements.com/game/Unravel/walkthrough/6">TrueAchievements：鱼船过程</a></p>
+<p><strong>情绪读法【分析】：</strong> 不安 → 找到互动方法 → 被带走的惊喜 → 船损坏的短暂不确定 → 安全落岸。其强度不能单凭速度推断，需结合能否控制和失败频率。</p>
+<p><strong>视听与补给：</strong> 原记录为事件启动时音乐重新激扬，乘船前后有补给／存档。</p></div></article><footer class="chapter-footer"><a href="#B03">← 孢子机制的主动应用</a><a href="#B05">综合解谜与操作组合 →</a></footer></section><section class="view chapter" id="B05" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B05</div><h1>综合解谜与操作组合</h1><p class="chapter-thesis">先让玩家组合解法，再要求动作衔接稳定，为追逐做准备。</p><div class="pressure-tags"><span>认知<b>中</b></span><span>操作<b>较高</b></span><span>即时威胁<b>中</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 鱼船落岸后的静态解谜 → 杠杆与配重 → 连续摆荡 → 追逐预警。</p></div><article class="puzzle" id="B05-P01"><header class="puzzle-header"><span>B05-P01</span><h2>搭桥运输与杠杆配重</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B05_P01_transport_01.png" data-caption="运输 01｜先取得高处重物，再转移至下层。" aria-label="放大查看：运输 01｜先取得高处重物，再转移至下层。"><img src="assets/B05_P01_transport_01.png" alt="运输 01｜先取得高处重物，再转移至下层。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>运输 01｜先取得高处重物，再转移至下层。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B05_P01_transport_02.png" data-caption="运输 02｜借助毛线斜面与桥面，将重物运往右侧。" aria-label="放大查看：运输 02｜借助毛线斜面与桥面，将重物运往右侧。"><img src="assets/B05_P01_transport_02.png" alt="运输 02｜借助毛线斜面与桥面，将重物运往右侧。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>运输 02｜借助毛线斜面与桥面，将重物运往右侧。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B05_P01_main_route.png" data-caption="主线方案｜向左调整配重，使右侧抬起，沿杠杆抵达出口。" aria-label="放大查看：主线方案｜向左调整配重，使右侧抬起，沿杠杆抵达出口。"><img src="assets/B05_P01_main_route.png" alt="主线方案｜向左调整配重，使右侧抬起，沿杠杆抵达出口。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>主线方案｜向左调整配重，使右侧抬起，沿杠杆抵达出口。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B05_P01_button03_route.png" data-caption="纽扣方案｜向右调整配重，从左侧下探取得纽扣③。两图为同一底图上的不同路线示意。" aria-label="放大查看：纽扣方案｜向右调整配重，从左侧下探取得纽扣③。两图为同一底图上的不同路线示意。"><img src="assets/B05_P01_button03_route.png" alt="纽扣方案｜向右调整配重，从左侧下探取得纽扣③。两图为同一底图上的不同路线示意。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>纽扣方案｜向右调整配重，从左侧下探取得纽扣③。两图为同一底图上的不同路线示意。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 需要通过倾斜构件抵达高处；角色自身重量会改变杠杆状态。</li>
+<li><strong>解决过程：</strong> 系结建立物体运输通路 → 将重物送到杠杆区域 → 调整左右配重 → 利用适合通行的倾斜状态抵达出口。</li>
+<li><strong>状态改变：</strong> 同一物体位置控制不同的可达区域。</li>
+<li><strong>引导：</strong> 玩家站上右侧导致其下沉，直接展示“重量会改变姿态”。</li>
+<li><strong>失败成本：</strong> 原记录未见死亡风险，主要是配重错误后重新调整。</li>
+<li><strong>设计作用：</strong> 把物体运输、重量关系、路线判断串成多步问题；思考重点从能否触发物体转到物体应该停在哪里。</li>
+</ul>
+<p><strong>C03 修订：</strong> 不写成自动获得的主线奖励。它在杠杆下方，需要先使左侧抬起取得，再切换配重状态服务通关。更准确的归类是“主线路径附近、需要额外状态操作的可选奖励”。<a href="https://gamerwalkthroughs.com/unravel/chapter-4-mountain-trek/">Gamer Walkthroughs：第三收集物</a></p></div></article><article class="puzzle" id="B05-P02"><header class="puzzle-header"><span>B05-P02</span><h2>连续摆荡与操作衔接</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B05_P02_route_annotated.png" data-caption="上方套索 → 平台系结 → 下降摆荡 → 接下一连接点 → 落岸。" aria-label="放大查看：上方套索 → 平台系结 → 下降摆荡 → 接下一连接点 → 落岸。"><img src="assets/B05_P02_route_annotated.png" alt="上方套索 → 平台系结 → 下降摆荡 → 接下一连接点 → 落岸。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>上方套索 → 平台系结 → 下降摆荡 → 接下一连接点 → 落岸。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 连接点距离比此前更远，水域或间隔使直接行走失效。</li>
+<li><strong>解决过程：</strong> 跳跃接套索 → 系结或调整毛线支点 → 摆荡取得位移 → 接下一连接点 → 落到安全地面。</li>
+<li><strong>状态改变：</strong> 从局部静态调整转为连续执行。</li>
+<li><strong>引导：</strong> 连接点与岸边位置给出动作目标，距离要求玩家考虑出手与松手时机。</li>
+<li><strong>失败：</strong> 落水；具体哪些区域触水即死、哪些只是拖慢，待实机统一。</li>
+<li><strong>设计作用：</strong> 在敌人正式追来之前，把后面要快速调用的动作组合再运行一遍。</li>
+</ul>
+<p><strong>视听与补给：</strong> 原记录为鱼船的激扬余韵逐渐转入洞穴主题，段前后有补给／存档；追逐前出现屏幕快速晃动预警。晃动是否早于敌人进入画面、提前多久，留空。</p></div></article><footer class="chapter-footer"><a href="#B04">← 鱼船事件与节奏转换</a><a href="#B06">高压追逐与威胁收束 →</a></footer></section><section class="view chapter" id="B06" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B06</div><h1>高压追逐与威胁收束</h1><p class="chapter-thesis">熟悉动作遇上时间压力：考验的是迅速、连续地执行。</p><div class="pressure-tags"><span>认知<b>较低</b></span><span>操作<b>高</b></span><span>即时威胁<b>高</b></span></div></header><div class="prose lead-prose"></div><article class="puzzle" id="B06-P01"><header class="puzzle-header"><span>B06-P01</span><h2>逃离追逐动物</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="土拨鼠追逐｜连续跨水与终段攀爬的压力检验"><source src="assets/B06_chase_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>土拨鼠追逐｜连续跨水与终段攀爬的压力检验<a class="original" href="assets/B06_chase_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><p><strong>体验边界：</strong> 威胁正式恢复追击 → 连续跨水 → 末段攀爬 → 动物坠落、追逐解除。</p>
+<ul>
+<li><strong>受阻局面：</strong> 不仅要过水，还必须赶在敌人追上之前完成。</li>
+<li><strong>解决过程：</strong> 向右逃跑 → 跳跃、发射、摆荡连续衔接 → 应对更远跨越及不稳定结点 → 及时攀上藤蔓 → 脱离追击路线。</li>
+<li><strong>状态改变：</strong> 熟悉的动作被放进短决策时间环境，最后由持续威胁转为明确安全。</li>
+<li><strong>引导与压力：</strong> 前进路线、可抓结点与攀爬出口承担引导；敌人距离和屏幕晃动叠加压力。</li>
+<li><strong>失败：</strong> 被抓住、落水或动作失误后被追上，具体判定待实测。</li>
+<li><strong>设计作用：</strong> 主要考动作提取速度和稳定性，并非重新教一种工具。</li>
+</ul>
+<p>原记录描述前三组相似“跳跃—套索—摆荡”，随后更长距离，再接终点攀爬。可以据此分析为“建立动作节拍 → 增加变化 → 最后收束”，但不能在没有距离与时间对照的情况下认定每组一定严格递增。</p>
+<p><strong>不稳定结点【原记录＋分析】：</strong> 脑图称一处高结点抓住即掉落。其功能可解释为限制长期停留、维持追逐流动；“开发者专门为了防止躲避而设置”没有原始开发资料支持，降为分析。</p>
+<p><strong>结尾反馈：</strong> 敌人坠落、叫声、角色爬到安全位置共同确认追逐终止。视觉结束不等于证实动物死亡，也不需要增加这一剧情结论。</p>
+<p><strong>视听与补给：</strong> 追逐主题与屏幕晃动沿用原记录；前后均有补给／存档。追逐结束瞬间音乐如何转接仍未确定。</p></div></article><footer class="chapter-footer"><a href="#B05">← 综合解谜与操作组合</a><a href="#B07">大型综合空间谜题 →</a></footer></section><section class="view chapter" id="B07" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B07</div><h1>大型综合空间谜题</h1><p class="chapter-thesis">追逐后的放松来自思考时间变多，空间问题本身依然复杂。</p><div class="pressure-tags"><span>认知<b>高</b></span><span>操作<b>中</b></span><span>即时威胁<b>较低</b></span></div></header><div class="prose lead-prose"></div><article class="puzzle" id="B07-P01"><header class="puzzle-header"><span>B07-P01</span><h2>多层洞穴的出口与收集支线</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B07_main_and_wrong_route.png" data-caption="橙色：主线与木桶搬运。紫色：毛线不足的错误路线。绿色：限制木桶移动的地形。" aria-label="放大查看：橙色：主线与木桶搬运。紫色：毛线不足的错误路线。绿色：限制木桶移动的地形。"><img src="assets/B07_main_and_wrong_route.png" alt="橙色：主线与木桶搬运。紫色：毛线不足的错误路线。绿色：限制木桶移动的地形。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>橙色：主线与木桶搬运。紫色：毛线不足的错误路线。绿色：限制木桶移动的地形。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B07_button04_route.png" data-caption="纽扣④｜右上释放石头，经下层搭桥向左运输，用石头垫脚取得收集物。" aria-label="放大查看：纽扣④｜右上释放石头，经下层搭桥向左运输，用石头垫脚取得收集物。"><img src="assets/B07_button04_route.png" alt="纽扣④｜右上释放石头，经下层搭桥向左运输，用石头垫脚取得收集物。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>纽扣④｜右上释放石头，经下层搭桥向左运输，用石头垫脚取得收集物。</figcaption></figure></div><div class="prose"><p><strong>体验边界：</strong> 追逐后进入可停下来观察的多层空间 → 调整道具与路线 → 从高处出洞。</p>
+<p><strong>主线局面：</strong> 出口高度不能直接到达，木桶等物体可以改变落脚条件；路线受毛线长度、台阶高度、可推行地形和上方空间约束。</p>
+<p><strong>主线解法链：</strong> 识别出口与缺失落脚条件 → 移动木桶到垫脚位置 → 利用层层跳跃与连接点向上 → 离开洞穴。本次图示确认木桶被拉到下层后向左推，绿色标出的台阶约束其移动范围。</p>
+<p><strong>C04 可选链：</strong> 发现纽扣目标 → 寻找较隐蔽的树枝牵拉点 → 使石头落下 → 系结搭出运输路径 → 把石头送到垫脚位置 → 取得纽扣 → 返回主线并处理多余系结。</p>
+<p><strong>为何仍保留一个 P：</strong> 主线与收集链共享同一个空间、道具关系和毛线预算，原脑图也按整体空间问题划分。为了便于复盘，本文在 P 内区分两条链，不把“拉石头、推木桶、打结”各自当作一题。</p>
+<p><strong>补图确认的错误路线：</strong> 沿左侧向上、再经过顶部的绕行方案会因毛线长度不足而失败。玩家须在中层调整木桶位置、绕过局部高度限制，重新建立有效向上路线。</p>
+<p><strong>状态与约束分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>玩家遇到的实际问题</th>
+<th>分析价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>跳跃高度</td>
+<td>有出口却不能直接上去</td>
+<td>引向垫脚物体</td>
+</tr>
+<tr>
+<td>物体与地形</td>
+<td>道具不能随意穿过台阶或窄处</td>
+<td>促使玩家规划运输路线</td>
+</tr>
+<tr>
+<td>毛线长度</td>
+<td>已走路线与系结占用可用长度</td>
+<td>把之前做过的连接也变为解题变量</td>
+</tr>
+<tr>
+<td>上方净空</td>
+<td>有垫脚物也不一定处处能跳</td>
+<td>排除部分看似可行的组合</td>
+</tr>
+<tr>
+<td>多层可见性</td>
+<td>看见目标却看不到完整操作链</td>
+<td>要求玩家连接分散的信息</td>
+</tr>
+</tbody>
+</table>
+<p>【资料补充】完成额外连接后，解开该区域不再需要的结能帮助避免后续毛线不足。不能只写“毛线短，所以路走错了”，还要考虑已留下的结。<a href="https://www.trueachievements.com/game/Unravel/walkthrough/6">TrueAchievements：迷宫后的解结</a></p>
+<p><strong>失败与代价：</strong> 移动木桶时可能被砸；其他失败主要是物体位置不对、路线无效、毛线不足。可逆调整与死亡重置必须分开统计。</p>
+<p><strong>设计作用：</strong> B06 让玩家快速执行，B07 则让玩家停下来把多个因果串联起来。C04 进一步测试玩家是否能在“已经知道出口”以后，仍建立一条额外的解法链。</p>
+<p><strong>视听与补给：</strong> 原记录为洞穴主题，解谜前后各有补给／存档。地下空间的安静让注意力转回构造关系，但“完全安全”不成立。</p></div></article><footer class="chapter-footer"><a href="#B06">← 高压追逐与威胁收束</a><a href="#B08">动态环境机关组合 →</a></footer></section><section class="view chapter" id="B08" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B08</div><h1>动态环境机关组合</h1><p class="chapter-thesis">鸟先展示因果，玩家再用毛线复现；环境先成为危险，再成为通路。</p><div class="pressure-tags"><span>认知<b>中</b></span><span>操作<b>中</b></span><span>即时威胁<b>中</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 离开洞穴回到林地 → 配重改变树枝 → 树间移动与塑料袋 → 木料释放 → 渡水抵达终点前。</p></div><article class="puzzle" id="B08-P01"><header class="puzzle-header"><span>B08-P01</span><h2>利用配重改变树枝形态</h2></header><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B08_P01_bird_hint.png" data-caption="① 演示：鸟停在树枝上将其压弯，提前展示因果。" aria-label="放大查看：① 演示：鸟停在树枝上将其压弯，提前展示因果。"><img src="assets/B08_P01_bird_hint.png" alt="① 演示：鸟停在树枝上将其压弯，提前展示因果。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>① 演示：鸟停在树枝上将其压弯，提前展示因果。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B08_P01_bird_leaves_route.png" data-caption="② 撤去条件：稍向前走，鸟飞走、树枝回升；图示后续牵拉路线。" aria-label="放大查看：② 撤去条件：稍向前走，鸟飞走、树枝回升；图示后续牵拉路线。"><img src="assets/B08_P01_bird_leaves_route.png" alt="② 撤去条件：稍向前走，鸟飞走、树枝回升；图示后续牵拉路线。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>② 撤去条件：稍向前走，鸟飞走、树枝回升；图示后续牵拉路线。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B08_P01_solved_route.png" data-caption="③ 玩家复现：连结重物与树枝，向左拖动重物牵弯树枝，再向右上通过。" aria-label="放大查看：③ 玩家复现：连结重物与树枝，向左拖动重物牵弯树枝，再向右上通过。"><img src="assets/B08_P01_solved_route.png" alt="③ 玩家复现：连结重物与树枝，向左拖动重物牵弯树枝，再向右上通过。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>③ 玩家复现：连结重物与树枝，向左拖动重物牵弯树枝，再向右上通过。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 树枝原有姿态不足以构成后续通路。</li>
+<li><strong>原记录演示：</strong> 鸟落在树枝上使其下弯，提前展示重量会改变形态。</li>
+<li><strong>解法核心【补图确认】：</strong> 将圆柱重物搬运至下层，与树枝建立毛线连接 → 向左拖动重物产生牵拉 → 树枝弯下，形成向右上通行的路线。用户提供了鸟压枝、鸟飞走后树枝回升、玩家解法成功三张状态图。</li>
+<li><strong>状态改变：</strong> 重物的位置变化转化为树枝姿态变化，间接改变角色路线。</li>
+<li><strong>失败：</strong> 落水；如果重物未先连接便落入水中，恢复方式待核验。</li>
+<li><strong>设计作用：</strong> 从观察外部演示，到用物体重建类似因果。</li>
+</ul>
+<p>【资料补充与修订】攻略对物体称呼不统一，出现罐状物、线轴等，因此暂用“圆柱重物”。攻略记有重物落入水中的解法，但用户最新图示为下层向左拖动重物牵弯树枝，正文以用户所示路线为准，不把入水列为必需步骤。<a href="https://www.gamepressure.com/unravel/level-4-mountain-trek-walkthrough/z98665">Gamepressure：出洞后的配重机关</a></p></div></article><article class="puzzle" id="B08-P02"><header class="puzzle-header"><span>B08-P02</span><h2>树间移动与塑料袋滑翔</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="塑料袋滑翔｜持续按住“发射毛线”，不能左右控制方向"><source src="assets/B08_P02_bag_glide_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>塑料袋滑翔｜持续按住“发射毛线”，不能左右控制方向<a class="original" href="assets/B08_P02_bag_glide_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 树枝与水域之间存在需要多次移动及特殊载体才能跨越的间隔。</li>
+<li><strong>解决过程：</strong> 树间跳跃与摆荡 → 接近提前可见的塑料袋 → 套取并借其滑翔 → 到达对岸。</li>
+<li><strong>状态改变：</strong> 移动方式从固定支点摆荡转向借助环境载体越过较大间隔。</li>
+<li><strong>引导：</strong> 塑料袋预先进入视野，形成短期目标。</li>
+<li><strong>操作【你已确认】：</strong> 滑翔时需要持续按住“发射毛线”，不能左右控制方向。具体松开后的判定未确认，不套用鱼船规则。</li>
+<li><strong>风险【原记录】：</strong> 未到岸而落水；不把本段描述成通过左右操纵修正落点的考试。</li>
+<li><strong>设计作用：</strong> 在熟悉移动中插入一次明显不同的运动体验，为末段增加变化。</li>
+</ul></div></article><article class="puzzle" id="B08-P03"><header class="puzzle-header"><span>B08-P03</span><h2>释放木料、避险与路径生成</h2></header><div class="evidence-gallery"><figure class="video-frame"><video controls preload="none" playsinline aria-label="释放木料｜开门、避险与渡水通路形成"><source src="assets/B08_P03_logs_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><figcaption><span class="media-kind">实机示范</span>释放木料｜开门、避险与渡水通路形成<a class="original" href="assets/B08_P03_logs_demo.mp4" target="_blank" rel="noopener">单独打开 ↗</a></figcaption><p class="video-error" hidden>此视频未能在当前浏览器中解码，可使用“单独打开”或下载后播放。</p></figure><figure class="image-frame small-image"><button class="zoom-image" data-src="assets/B08_P03_button05_location.png" data-caption="纽扣⑤位于清空后的储木空间，角色左侧。事件结束后回看，才有机会发现。" aria-label="放大查看：纽扣⑤位于清空后的储木空间，角色左侧。事件结束后回看，才有机会发现。"><img src="assets/B08_P03_button05_location.png" alt="纽扣⑤位于清空后的储木空间，角色左侧。事件结束后回看，才有机会发现。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>纽扣⑤位于清空后的储木空间，角色左侧。事件结束后回看，才有机会发现。</figcaption></figure></div><div class="prose"><ul>
+<li><strong>受阻局面：</strong> 前方水域难以直接通过，储木设施内的木料可以改变局面。</li>
+<li><strong>解决过程：</strong> 打开储木门 → 木料滚出 → 迅速转移到上方树枝等安全点 → 等待动态物体稳定 → 借形成的木料通路过水。</li>
+<li><strong>状态改变：</strong> 封闭储物空间变为空仓；木料先是威胁，随后成为路线。</li>
+<li><strong>引导：</strong> 门的可交互点、水边上方结点、木料运动方向共同提供行动信息；玩家能否事先看见安全点需截图确认。</li>
+<li><strong>失败：</strong> 被木料或门砸中、落水；门的具体伤害行为仍待实机细分。</li>
+<li><strong>设计作用：</strong> 让“解决谜题”本身触发一小段执行压力，再把危险物转成通行工具。</li>
+</ul>
+<p><strong>C05 标记：</strong> 木料释放后回看已清空的储木空间取得纽扣。它奖励的是事件后的重新观察，而不是首次进入空间时就能完成的搜索。离开该处后还能否返回、是否存在不可逆边界，留空。</p>
+<p><strong>视听与补给：</strong> 原记录为出洞时洞穴主题切回山林主题，开阔感带来释放；各短谜题后均有补给／存档记录。末段仍有动态危险，所以不能将 B08 概括为无挑战的奖励走廊。</p></div></article><footer class="chapter-footer"><a href="#B07">← 大型综合空间谜题</a><a href="#B09">终点奖励与记忆回收 →</a></footer></section><section class="view chapter" id="B09" hidden><a class="back-detail" href="#report07">← 07_详细关卡分析 · 阶段索引</a><header class="chapter-header"><div class="eyebrow">07_详细关卡分析 / B09</div><h1>终点奖励与记忆回收</h1><p class="chapter-thesis">终点蝴蝶结束动作挑战，相册把一路收集的记忆留存下来。</p><div class="pressure-tags"><span>认知<b>低</b></span><span>操作<b>低</b></span><span>即时威胁<b>低</b></span></div></header><div class="prose lead-prose"><p><strong>体验边界：</strong> 完成渡水 → 抵达靴子与毛线蝴蝶 → 捡起奖励 → 通关。相册回看作为通关后的叙事回路另行记录，不人为增设新的关内谜题。</p>
+<p>原记录中，红毛线作鞋带的靴子旁放着毛线蝴蝶，Yarny 捡起它，结束本关。此段无谜题，音乐从山林主题转为原记录所称“游戏初始主题”。具体曲名与录音版本未核验。</p>
+<p><strong>视觉回收【分析】：</strong> 沿途出现的蝴蝶与终点毛线蝴蝶形成形象呼应，普通环境细节在终点获得更集中的意义。“这是老奶奶过去上山扑蝶的回忆”是原脑图的解释，不能仅靠蝴蝶意象确定人物和事件，等待回忆影像及照片补充。</p>
+<p>官方确实说明第一部的红色 Yarny 帮助一位祖母找回过去记忆；这只支持整体人物关系，不证明本关具体照片内容。<a href="https://www.ea.com/ea-originals/news/what-are-the-yarnys">EA：What Are Yarnys and Where Do They Come From?</a></p>
+<p><strong>通关后的确认【你已确认】：</strong> 沿途收集的回忆以照片形式进入相册并可翻看。照片数量、每段影像是否一一对应、入册演出与页面顺序均暂不设定。</p></div><div class="evidence-gallery"><figure class="image-frame"><button class="zoom-image" data-src="assets/B09_butterfly_reward.png" data-caption="终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。" aria-label="放大查看：终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。"><img src="assets/B09_butterfly_reward.png" alt="终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>终点：靴子、红毛线与毛线蝴蝶共同完成奖励演出。</figcaption></figure><figure class="image-frame"><button class="zoom-image" data-src="assets/B09_album_cover.png" data-caption="相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。" aria-label="放大查看：相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。"><img src="assets/B09_album_cover.png" alt="相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。" loading="lazy"><span class="zoom-label">放大查看 ↗</span></button><figcaption>相册封面：毛线蝴蝶与其他纪念物呈现在封面上。照片入册与翻看规则来自用户确认。</figcaption></figure></div><footer class="chapter-footer"><a href="#B08">← 动态环境机关组合</a><a href="#report08">视觉与听觉引导 →</a></footer></section></main><dialog id="image-dialog"><div class="dialog-top"><span id="image-caption"></span><div><a id="full-image" target="_blank" rel="noopener">原图 ↗</a><button id="close-image" aria-label="关闭大图">关闭 ×</button></div></div><div class="dialog-image-wrap"><img id="large-image" alt=""></div></dialog><script src="app.js"></script></body></html>
